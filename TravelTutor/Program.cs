@@ -1,6 +1,7 @@
 using Azure.Storage.Blobs;
 using Microsoft.Extensions.Options;
 using TravelTutor.Configuration;
+using TravelTutor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +14,13 @@ builder.Services.AddSingleton<BlobServiceClient>((serviceProvider) => {
 });
 builder.Services.Configure<VideoOptions>(
     builder.Configuration.GetSection(VideoOptions.SectionKey));
-
+builder.Services
+    .AddHttpContextAccessor()
+    .AddSingleton<VideoService>()
+    .AddSingleton<TravelDataService>()
+    .AddSession();
 var app = builder.Build();
-
+app.UseSession();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
