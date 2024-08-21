@@ -1,7 +1,18 @@
+using Azure.Storage.Blobs;
+using Microsoft.Extensions.Options;
+using TravelTutor.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<BlobServiceClient>((serviceProvider) => {
+    var videOptions = serviceProvider.GetRequiredService<IOptions<VideoOptions>>().Value;
+    var blobServiceClient = new BlobServiceClient(videOptions.ConnectionString);
+    return blobServiceClient;
+});
+builder.Services.Configure<VideoOptions>(
+    builder.Configuration.GetSection(VideoOptions.SectionKey));
 
 var app = builder.Build();
 
