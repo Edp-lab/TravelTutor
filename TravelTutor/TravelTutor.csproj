@@ -9,6 +9,8 @@
 
     <ItemGroup>
       <PackageReference Include="Azure.Storage.Blobs" Version="12.21.2" />
-    </ItemGroup>
+		<PackageReference Include="Azure.AI.OpenAI" Version="2.0.0-beta.2" />
+
+	</ItemGroup>
 
 </Project>
