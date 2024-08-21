@@ -1,93 +1,115 @@
-﻿@{
+﻿@model TravelTutor.Models.UserInputViewModel
+@{
     ViewData["Title"] = "Travel Tutor";
 }
 <div class="if block">
     <div class="if container">
-        <h2 class="if heading large center">Ready for your adventure?</h2>
 
-        Share your trip details, and we'll provide you with a short video with essential safety tips. Watch it to unlock a 10% discount on your travel insurance!
-  
         <div class="if content">
-            <div class="if flex-column gap-8">
-                <label class="if label is-required" for="fullname">Travel destination</label>
-                <input class="if input-field"
-                       name="fullname"
-                       id="fullname"
-                       type="text"
-                       placeholder="Egypt" />
-            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <h2 class="if heading large">Ready for your adventure?</h2>
 
-            <div class="if flex-column gap-8">
-                <label class="if label is-required" for="date">Choose date</label>
-                <input class="if input-field"
-                       name="date"
-                       id="date"
-                       type="date"></input>
-            </div>
+                    Share your trip details, and we'll provide you with a short video with essential safety tips. Watch it to unlock a 10% discount on your travel insurance!
 
-            <div class="if flex-column gap-8">
-                <label class="if label is-required" for="date">Choose date</label>
-                <input class="if input-field"
-                       name="date"
-                       id="date"
-                       type="date"></input>
-            </div>
+                    <form asp-action="PostData" method="post">
 
-            <div class="if numeric-stepper-container">
-                <button type="button"
-                        id="decrement-button"
-                        class="if icon-button filled emphasized x-small"
-                        aria-label="Decrement">
-                    <ids-icon aria-hidden="true" ui-16 minus></ids-icon>
-                </button>
-                <input class="if numeric-stepper-input-field"
-                       type="number"
-                       id="numeric-stepper-default"
-                       name="numeric-stepper-default"
-                       value="2"
-                       max="9"
-                       min="0"
-                       step="1"
-                       aria-live="polite" />
-                <button type="button"
-                        id="increment-button"
-                        class="if icon-button filled emphasized x-small"
-                        aria-label="Increment">
-                    <ids-icon aria-hidden="true" ui-16 plus></ids-icon>
-                </button>
-            </div>
+      
+
+                        <div class="if flex-column gap-8">
+                            <label asp-for="Destination" class="if label is-required" for="destination">Travel destination</label>
+                            <input class="if input-field"
+                                   name="destination"
+                                   id="destination"
+                                   type="text"
+                                   placeholder="Egypt" />
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+
+                                <div class="if flex-column gap-8">
+                                    <label class="if label is-required" for="date">Start date</label>
+                                    <input asp-for="StartDate"
+                                           class="custom-date"
+                                           name="startdate"
+                                           id="startdate"
+                                           type="date"/>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="if flex-column gap-8">
+                                    <label class="if label is-required" for="date">End date</label>
+                                    <input asp-for="EndDate"
+                                           class="custom-date"
+                                           name="enddate"
+                                           id="enddate"
+                                           type="date"/>
+                                </div>
+                            </div>
 
 
-            <fieldset class="if border-none">
-                <legend class="if typography ui medium">Travel purpose</legend>
-                <div class="if flex-column gap-24 mt-24">
-                    <div class="if radio-button">
-                        <input class="if radio-button-input" type="radio" id="car" name="tourism" checked />
-                        <label class="if typography ui medium" for="tourism">Tourism</label>
-                    </div>
-                    <div class="if radio-button">
-                        <input class="if radio-button-input" type="radio" id="work" name="work" />
-                        <label class="if typography ui medium" for="pet">Work</label>
-                    </div>
-                    <div class="if radio-button">
-                        <input class="if radio-button-input" type="radio" id="Education" name="education" />
-                        <label class="if typography ui medium" for="education">Education</label>
+                        </div>
+                        <div class="if numeric-stepper-container">
+                            <button type="button"
+                                    id="decrement-button"
+                                    class="if icon-button filled emphasized x-small"
+                                    aria-label="Decrement">
+                                <ids-icon aria-hidden="true" ui-16 minus></ids-icon>
+                            </button>
+                            <input class="if numeric-stepper-input-field"
+                                   type="number"
+                                   id="numeric-stepper-default"
+                                   name="numeric-stepper-default"
+                                   value="2"
+                                   max="9"
+                                   min="0"
+                                   step="1"
+                                   aria-live="polite" />
+                            <button type="button"
+                                    id="increment-button"
+                                    class="if icon-button filled emphasized x-small"
+                                    aria-label="Increment">
+                                <ids-icon aria-hidden="true" ui-16 plus></ids-icon>
+                            </button>
+                        </div>
+                        <fieldset class="if border-none">
+                            <legend class="if typography ui medium">Travel purpose</legend>
+                            <div class="if flex-column gap-24 mt-24">
+                                <div class="if radio-button">
+                                    <input class="if radio-button-input" type="radio" id="car" name="purpose" checked />
+                                    <label class="if typography ui medium" for="tourism">Tourism</label>
+                                </div>
+                                <div class="if radio-button">
+                                    <input class="if radio-button-input" type="radio" id="work" name="purpose" />
+                                    <label class="if typography ui medium" for="pet">Work</label>
+                                </div>
+                                <div class="if radio-button">
+                                    <input class="if radio-button-input" type="radio" id="Education" name="purpose" />
+                                    <label class="if typography ui medium" for="education">Education</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="if flex-column gap-8">
+                            <label class="if label is-required" for="activities">Activities planned during the trip</label>
+                            <input asp-for="Activities"
+                                   class="if input-field"
+                                   name="activities"
+                                   id="activities"
+                                   type="text"
+                                   placeholder="e.g. skiing, swimming" />
+                        </div>
+
+                        <button type="submit" class="if button filled">Continue</button>
+                    </form>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="if image travel-bag">
                     </div>
                 </div>
-            </fieldset>
-
-            <div class="if flex-column gap-8">
-                <label class="if label is-required" for="fullname">Activities planned during the trip</label>
-                <input class="if input-field"
-                       name="fullname"
-                       id="fullname"
-                       type="text"
-                       placeholder="e.g. skiing, swimming" />
             </div>
-        </div>
-    
-        <div class="if image travel-bag">
-            
         </div>
 
     </div>
