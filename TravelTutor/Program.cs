@@ -20,6 +20,7 @@ builder.Services
     .AddSingleton<VideoService>()
     .AddSingleton<TravelDataService>()
     .AddSingleton<QuestionsService>()
+    .AddSingleton<CompletionService>()
     .AddSession();
 var app = builder.Build();
 app.UseSession();
