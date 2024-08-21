@@ -23,6 +23,7 @@ public class QuizController(
     [HttpPost]
     public async Task<IActionResult> SubmitResult(QuizViewModel model)
     {
+        model.IsSuccess = true;
         model.SuccessModel = new();
         var code = await completionService.GetCompletionCode(model);
         model.SuccessModel.Code = code;

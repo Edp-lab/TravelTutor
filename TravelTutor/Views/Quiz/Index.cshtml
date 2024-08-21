@@ -69,26 +69,36 @@
                         <h3 class="if weight-bold">@Model.SuccessModel.Code</h3>
                         <p class="if">Enter your e-mail address or phone number to receive your discount</p>
                         <form asp-action="SubmitConsent" method="post">
+                            @for (int questionIndex = 0; questionIndex < Model.Questions.Count; questionIndex++)
+                            {
+                                @Html.HiddenFor(m => m.Questions[questionIndex].Question.Question)
+                                @Html.HiddenFor(m => m.Questions[questionIndex].Question.CorrectAnswer)
+                                @Html.HiddenFor(m => m.Questions[questionIndex].AnswerInput)
+                                @for (int optionIndex = 0; optionIndex < Model.Questions[questionIndex].Question.Options.Count; optionIndex++)
+                                {
+                                    @Html.HiddenFor(m => m.Questions[questionIndex].Question.Options[optionIndex])
+                                }
+                            }
+                            @Html.HiddenFor(m => m.IsSuccess)
+                            @Html.HiddenFor(m => m.SuccessModel.Code)
                             <div class="if flex-column gap-8">
-                                <label class="if label" for="fullname">E-mail address</label>
+                                <label class="if label" for="email">E-mail address</label>
                                 <input
                                     class="if input-field complete"
-                                    name="email"
+                                    name="Model.SuccessModel.Email"
                                     id="email"
                                     type="text"
-                                    placeholder="e.g. John.Doe@gmail.com"
-                                    asp-for="SuccessModel.Email"/>
+                                    placeholder="e.g. John.Doe@gmail.com"/>
                             </div>
                             <br/>
                             <div class="if flex-column gap-8">
-                                <label class="if label" for="fullname">Phone number</label>
+                                <label class="if label" for="phone">Phone number</label>
                                 <input
                                     class="if input-field complete"
-                                    name="phone"
+                                    name="Model.SuccessModel.Phone"
                                     id="phone"
                                     type="phone"
-                                    placeholder="e.g. +371 27777777"
-                                    asp-for="SuccessModel.Phone"/>
+                                    placeholder="e.g. +371 27777777"/>
                             </div>
                             <br/>
                             <p class="if">Do you want to receive information about latest deals?</p>
@@ -96,18 +106,16 @@
                                 <div class="if radio-button">
                                     <input class="if radio-button-input"
                                            type="radio" id="yes"
-                                           name="Yes"
-                                           value="True"
-                                           asp-for="SuccessModel.ReceivePromo">
+                                           name="Model.SuccessModel.ReceivePromo"
+                                           value="True">
                                     <label class="if typography ui medium" for="yes">Yes</label>
                                 </div>
                                 <div class="if radio-button">
                                     <input class="if radio-button-input"
                                            type="radio"
                                            id="no"
-                                           name="No"
-                                           value="False"
-                                           asp-for="SuccessModel.Email">
+                                           name="Model.SuccessModel.ReceivePromo"
+                                           value="False">
                                     <label class="if typography ui medium" for="no">No</label>
                                 </div>
                             </div>
