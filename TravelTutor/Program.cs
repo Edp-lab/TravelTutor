@@ -15,6 +15,7 @@ builder.Services.AddSingleton<BlobServiceClient>((serviceProvider) => {
 builder.Services.Configure<VideoOptions>(
     builder.Configuration.GetSection(VideoOptions.SectionKey));
 builder.Services
+    .AddMemoryCache()
     .AddHttpContextAccessor()
     .AddSingleton<VideoService>()
     .AddSingleton<TravelDataService>()
