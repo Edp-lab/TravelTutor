@@ -35485,3 +35485,28 @@ input.if:focus-visible {
     height: 6rem !important;
     font-size: x-large;
 }
+
+.if.circle {
+    border: none;
+    border-radius: 50%;
+    height: 30px !important;
+    width: 30px !important;
+    background-color: #E8E0D9;
+    text-align: center;
+    line-height: 1.25;
+    padding: 0;
+    align-content: center;
+}
+
+.if.quiz-selection {
+    border: none;
+    padding-left: 0.25rem;
+}
+
+.if.quiz-question {
+    margin-bottom: 1rem !important;
+}
+
+.if.radio-button {
+    margin-bottom: 0.75rem !important;
+}

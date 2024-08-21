@@ -20,6 +20,6 @@ public class VideoController(
 
     public IActionResult ToQuiz()
     {
-        return RedirectToAction("Index", "Test");
+        return RedirectToAction("Index", "Quiz");
     }
 }

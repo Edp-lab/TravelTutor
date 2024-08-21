@@ -4,7 +4,7 @@ using TravelTutor.Services;
 
 namespace TravelTutor.Controllers;
 
-public class TestController(QuestionsService questionsService, TravelDataService travelDataService) : Controller
+public class QuizController(QuestionsService questionsService, TravelDataService travelDataService) : Controller
 {
     public async Task<IActionResult> Index()
     {
