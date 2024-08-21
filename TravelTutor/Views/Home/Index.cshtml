@@ -9,13 +9,54 @@
   
         <div class="if content">
             <div class="if flex-column gap-8">
-                <label class="if label is-required" for="fullname">Travel destination *</label>
+                <label class="if label is-required" for="fullname">Travel destination</label>
                 <input class="if input-field"
                        name="fullname"
                        id="fullname"
                        type="text"
                        placeholder="Egypt" />
             </div>
+
+            <div class="if flex-column gap-8">
+                <label class="if label is-required" for="date">Choose date</label>
+                <input class="if input-field"
+                       name="date"
+                       id="date"
+                       type="date"></input>
+            </div>
+
+            <div class="if flex-column gap-8">
+                <label class="if label is-required" for="date">Choose date</label>
+                <input class="if input-field"
+                       name="date"
+                       id="date"
+                       type="date"></input>
+            </div>
+
+            <div class="if numeric-stepper-container">
+                <button type="button"
+                        id="decrement-button"
+                        class="if icon-button filled emphasized x-small"
+                        aria-label="Decrement">
+                    <ids-icon aria-hidden="true" ui-16 minus></ids-icon>
+                </button>
+                <input class="if numeric-stepper-input-field"
+                       type="number"
+                       id="numeric-stepper-default"
+                       name="numeric-stepper-default"
+                       value="2"
+                       max="9"
+                       min="0"
+                       step="1"
+                       aria-live="polite" />
+                <button type="button"
+                        id="increment-button"
+                        class="if icon-button filled emphasized x-small"
+                        aria-label="Increment">
+                    <ids-icon aria-hidden="true" ui-16 plus></ids-icon>
+                </button>
+            </div>
+
 
             <fieldset class="if border-none">
                 <legend class="if typography ui medium">Travel purpose</legend>

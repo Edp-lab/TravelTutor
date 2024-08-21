@@ -8,6 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="wwwroot\lib\**" />
+      <Content Remove="wwwroot\lib\**" />
+      <EmbeddedResource Remove="wwwroot\lib\**" />
+      <None Remove="wwwroot\lib\**" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="Azure.Storage.Blobs" Version="12.21.2" />
 		<PackageReference Include="Azure.AI.OpenAI" Version="2.0.0-beta.2" />
 
