@@ -2,78 +2,161 @@
 @{
     ViewData["Title"] = "Travel Tutor";
 }
-<div class="if block">
-    <div class="if container">
+<div class="if container tutor">
+    <div class="if content row">
+        <div class="col-md-7">
+            <h2 class="if heading">Ready for your adventure?</h2>
 
-        <div class="if content">
-            <div class="row">
-                <div class="col-md-7">
-                    <h2 class="if heading large">Ready for your adventure?</h2>
+            <span>Share your trip details, and we'll create a quick video with essential safety tips. Watch it, complete a quiz, and unlock a <b>10% discount</b> on your travel insurance!</span>
 
-                    Share your trip details, and we'll provide you with a short video with essential safety tips. Watch it to unlock a 10% discount on your travel insurance!
-
-                    <form asp-action="PostData" method="post">
-
-      
+            <form asp-action="PostData" method="post">
+                <div class="row if mt-24">
+                    <div class="col-md-12">
+                        
 
                         <div class="if flex-column gap-8">
-                            <label asp-for="Destination" class="if label is-required" for="destination">Travel destination</label>
-                            <input class="if input-field"
-                                   name="destination"
-                                   id="destination"
-                                   type="text"
-                                   placeholder="Egypt" />
+                            <label  class="if label is-required" for="destination">Travel destination</label>
+          
+                            @Html.DropDownListFor(
+                                     model => model.Destination,
+                                     new SelectList(Model.AllDestinations),
+                                     htmlAttributes: new { @class = "if dropdown-select", id = "destination", name = "default-state" }
+                                     )
                         </div>
-                        <div class="row">
+                    </div>
+                </div>
 
-                            <div class="col-md-6">
+                <div class="row if mt-24">
+                    <div class="col-md-6">
+                        <div class="if flex-column gap-8">
+                            <label class="if label is-required" for="date">Start date</label>
+                            <input asp-for="StartDate"
+                                   class="custom-date"
+                                   name="startdate"
+                                   id="startdate"
+                                   type="date" />
+                        </div>
+                    </div>
 
-                                <div class="if flex-column gap-8">
-                                    <label class="if label is-required" for="date">Start date</label>
-                                    <input asp-for="StartDate"
-                                           class="custom-date"
-                                           name="startdate"
-                                           id="startdate"
-                                           type="date"/>
-                                </div>
+                    <div class="col-md-6">
+                        <div class="if flex-column gap-8">
+                            <label class="if label is-required" for="date">End date</label>
+                            <input asp-for="EndDate"
+                                   class="custom-date"
+                                   name="enddate"
+                                   id="enddate"
+                                   type="date" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row if mt-48">
+                    <div class="col-md-12">
+                        <div class="if flex-center justify-content-space-between border-top-solid border-width-1 p-16 border-color-disabled">
+                            <label class="if typography ui large weight-bold"
+                                   id="label-text-1"
+                                   for="adults">
+                                <span>Adults</span>
+                                <span class="if typography ui large disabled">18+ years</span>
+                            </label>
+                            <div class="if numeric-stepper-container">
+                                <button id="decrement-button"
+                                        class="if icon-button filled emphasized x-small"
+                                        aria-label="Decrement by one"
+                                        type="button">
+                                    <ids-icon aria-hidden="true" ui-16 minus></ids-icon>
+                                </button>
+                                <input asp-for="AdultsCount"
+                                       id="adults"
+                                       type="number"
+                                       value="1"
+                                       min="1"
+                                       max="9"
+                                       step="1"
+                                       class="if numeric-stepper-input-field" />
+                                <button id="increment-button"
+                                        class="if icon-button filled emphasized x-small"
+                                        aria-label="Increment by one"
+                                        type="button">
+                                    <ids-icon aria-hidden="true" ui-16 plus></ids-icon>
+                                </button>
+                                <span id="live-message-container"
+                                      aria-live="polite"
+                                      class="if sr-only"></span>
                             </div>
-
-                            <div class="col-md-6">
-                                <div class="if flex-column gap-8">
-                                    <label class="if label is-required" for="date">End date</label>
-                                    <input asp-for="EndDate"
-                                           class="custom-date"
-                                           name="enddate"
-                                           id="enddate"
-                                           type="date"/>
-                                </div>
+                        </div>
+                        <div class="if flex-center justify-content-space-between border-top-solid border-width-1 p-16 border-color-disabled">
+                            <label id="label-children"
+                                   class="if typography ui large weight-bold"
+                                   for="children">
+                                Children
+                                <span class="if typography ui large disabled">&lt; 18 years</span>
+                            </label>
+                            <div class="if numeric-stepper-container">
+                                <button id="decrement-button"
+                                        class="if icon-button filled emphasized x-small"
+                                        aria-label="Decrement by one"
+                                        type="button">
+                                    <ids-icon aria-hidden="true" ui-16 minus></ids-icon>
+                                </button>
+                                <input asp-for="ChildrenCount"
+                                       id="children"
+                                       type="number"
+                                       value="0"
+                                       min="0"
+                                       max="9"
+                                       step="1"
+                                       class="if numeric-stepper-input-field" />
+                                <button id="increment-button"
+                                        class="if icon-button filled emphasized x-small"
+                                        aria-label="Increment by one"
+                                        type="button">
+                                    <ids-icon aria-hidden="true" ui-16 plus></ids-icon>
+                                </button>
+                                <span id="live-message-container"
+                                      aria-live="polite"
+                                      class="if sr-only"></span>
                             </div>
-
-
                         </div>
-                        <div class="if numeric-stepper-container">
-                            <button type="button"
-                                    id="decrement-button"
-                                    class="if icon-button filled emphasized x-small"
-                                    aria-label="Decrement">
-                                <ids-icon aria-hidden="true" ui-16 minus></ids-icon>
-                            </button>
-                            <input class="if numeric-stepper-input-field"
-                                   type="number"
-                                   id="numeric-stepper-default"
-                                   name="numeric-stepper-default"
-                                   value="2"
-                                   max="9"
-                                   min="0"
-                                   step="1"
-                                   aria-live="polite" />
-                            <button type="button"
-                                    id="increment-button"
-                                    class="if icon-button filled emphasized x-small"
-                                    aria-label="Increment">
-                                <ids-icon aria-hidden="true" ui-16 plus></ids-icon>
-                            </button>
+                        <div class="if flex-center justify-content-space-between border-top-solid border-width-1 p-16 border-color-disabled">
+                            <label id="label-text-3"
+                                   class="if typography ui large weight-bold"
+                                   for="infants">
+                                Infants
+                                <span class="if typography ui large disabled">&lt; 1 year</span>
+                            </label>
+                            <div class="if numeric-stepper-container">
+                                <button id="decrement-button"
+                                        class="if icon-button filled emphasized x-small"
+                                        aria-label="Decrement by one"
+                                        type="button">
+                                    <ids-icon aria-hidden="true" ui-16 minus></ids-icon>
+                                </button>
+                                <input asp-for="InfantCount"
+                                       id="infants"
+                                       type="number"
+                                       value="0"
+                                       min="0"
+                                       max="9"
+                                       step="1"
+                                       class="if numeric-stepper-input-field" />
+                                <button id="increment-button"
+                                        class="if icon-button filled emphasized x-small"
+                                        aria-label="Increment by one"
+                                        aria-labelledby="numeric-stepper-3 label-text-3 increment-button"
+                                        type="button">
+                                    <ids-icon aria-hidden="true" ui-16 plus></ids-icon>
+                                </button>
+                                <span id="live-message-container"
+                                      aria-live="polite"
+                                      class="if sr-only"></span>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="row if mt-48">
+                    <div class="col-md-12">
                         <fieldset class="if border-none">
                             <legend class="if typography ui medium">Travel purpose</legend>
                             <div class="if flex-column gap-24 mt-24">
@@ -91,6 +174,10 @@
                                 </div>
                             </div>
                         </fieldset>
+                    </div>
+                </div>
+                <div class="row if mt-48">
+                    <div class="col-md-12">
                         <div class="if flex-column gap-8">
                             <label class="if label is-required" for="activities">Activities planned during the trip</label>
                             <input asp-for="Activities"
@@ -100,17 +187,22 @@
                                    type="text"
                                    placeholder="e.g. skiing, swimming" />
                         </div>
-
-                        <button type="submit" class="if button filled">Continue</button>
-                    </form>
-                </div>
-
-                <div class="col-md-5">
-                    <div class="if image travel-bag">
                     </div>
                 </div>
+
+                <div class="row if mt-32 mb-24">
+                    <div class="col-md-12">
+                        <button type="submit" class="if button filled">Continue</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-5">
+            <div class="if image travel-bag">
             </div>
         </div>
 
     </div>
+
 </div>

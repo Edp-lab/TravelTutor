@@ -5,9 +5,9 @@ using TravelTutor.Services;
 
 namespace TravelTutor.Controllers;
 
-public class HomeController(TravelDataService travelDataService) : Controller
+public class HomeController(TravelDataService travelDataService, VideoService videoService) : Controller
 {
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         //var current = travelDataService.GetCurrent();
         //if (current is null)
@@ -22,7 +22,12 @@ public class HomeController(TravelDataService travelDataService) : Controller
         //    });
         //}
 
-        return View();
+        var allDestinations = await videoService.GetAllDestinations();
+        allDestinations = [.. allDestinations.Select(destination => char.ToUpper(destination[0]) + destination.Substring(1).ToLower())
+            .Distinct()
+            .OrderBy(destination => destination)];
+
+        return View(new UserInputViewModel() { AllDestinations = allDestinations });
     }
 
     [HttpPost]
@@ -34,7 +39,7 @@ public class HomeController(TravelDataService travelDataService) : Controller
             Destination = travelDataInput.Destination,
             StartDate = travelDataInput.StartDate,
             EndDate = travelDataInput.EndDate,
-            HasChildren = false,
+            HasChildren = (travelDataInput.ChildrenCount + travelDataInput.InfantCount) > 0,
             Activities = travelDataInput.Activities.Split(',').ToList()
         });
 
