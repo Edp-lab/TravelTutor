@@ -7444,24 +7444,6 @@ footer.if.global-footer a.if:focus-visible, footer.if.global-footer a:focus-visi
     width: 100% !important
 }
 
-.if.row {
-    display: flex;
-    flex-wrap: wrap;
-    min-width: 100%;
-    grid-gap: 0 1.5rem
-}
-
-@media screen and (min-width: 25rem) {
-    .if.row {
-        grid-gap: 0 2rem
-    }
-}
-
-@media screen and (min-width: 45rem) {
-    .if.row {
-        grid-gap: 0 2.5rem
-    }
-}
 
 @media screen and (min-width: 160rem) {
     .if.grid.wide > .if.row {
@@ -14791,9 +14773,6 @@ footer.if.global-footer a.if:focus-visible, footer.if.global-footer a:focus-visi
     outline-offset: .125rem
 }
 
-.if.input-field[data-size=largest], input.if:not([type=radio]):not([type=checkbox])[data-size=largest] {
-    width: 100%
-}
 
 @media screen and (min-width: 45rem) {
     .if.input-field[data-size=largest], input.if:not([type=radio]):not([type=checkbox])[data-size=largest] {
@@ -26291,10 +26270,6 @@ input[type=file].if.drag-drop:focus-visible ~ button.if.file-upload {
     order: 3
 }
 
-.if.input-field.is-invalid ~ .if.input-help, .if.input-field:invalid:not(:placeholder-shown) ~ .if.input-help, .if.input-field[invalid] ~ .if.input-help, input.if:not([type=radio]):not([type=checkbox]).is-invalid ~ .if.input-help, input.if:not([type=radio]):not([type=checkbox]):invalid:not(:placeholder-shown) ~ .if.input-help, input.if:not([type=radio]):not([type=checkbox])[invalid] ~ .if.input-help {
-    margin-left: 0
-}
-
 .if.input-error {
     color: #bb320c;
     display: none;
@@ -26308,10 +26283,6 @@ input[type=file].if.drag-drop:focus-visible ~ button.if.file-upload {
     margin-left: 0;
     margin-top: .5rem;
     order: 3
-}
-
-.if.input-field.is-invalid ~ .if.input-error, .if.input-field:invalid:not(:placeholder-shown) ~ .if.input-error, .if.input-field[invalid] ~ .if.input-error, input.if:not([type=radio]):not([type=checkbox]).is-invalid ~ .if.input-error, input.if:not([type=radio]):not([type=checkbox]):invalid:not(:placeholder-shown) ~ .if.input-error, input.if:not([type=radio]):not([type=checkbox])[invalid] ~ .if.input-error {
-    margin-left: 0
 }
 
 .if.dropdown-select, select.if {
@@ -26815,12 +26786,6 @@ select::-ms-expand {
     outline-offset: 0
 }
 
-.if.dropdown-select ~ .if.input-label-wrapper, .if.input-field ~ .if.input-label-wrapper, .if.segmented-control ~ .if.input-label-wrapper, .if.textarea ~ .if.input-label-wrapper, input.if:not([type=radio]):not([type=checkbox]) ~ .if.input-label-wrapper, select.if ~ .if.input-label-wrapper, textarea.if.textarea ~ .if.input-label-wrapper, textarea.if ~ .if.input-label-wrapper {
-    display: inline-block;
-    margin-bottom: .75rem;
-    order: 1;
-    position: relative
-}
 
 .if.dropdown-select ~ .if.input-label-wrapper > label.if, .if.dropdown-select ~ .if.input-label-wrapper > label.if.input-label, .if.dropdown-select ~ label.if, .if.dropdown-select ~ label.if.input-label, .if.input-field ~ .if.input-label-wrapper > label.if, .if.input-field ~ .if.input-label-wrapper > label.if.input-label, .if.input-field ~ label.if, .if.input-field ~ label.if.input-label, .if.segmented-control ~ .if.input-label-wrapper > label.if, .if.segmented-control ~ .if.input-label-wrapper > label.if.input-label, .if.segmented-control ~ label.if, .if.segmented-control ~ label.if.input-label, .if.textarea ~ .if.input-label-wrapper > label.if, .if.textarea ~ .if.input-label-wrapper > label.if.input-label, .if.textarea ~ label.if, .if.textarea ~ label.if.input-label, input.if:not([type=radio]):not([type=checkbox]) ~ .if.input-label-wrapper > label.if, input.if:not([type=radio]):not([type=checkbox]) ~ .if.input-label-wrapper > label.if.input-label, input.if:not([type=radio]):not([type=checkbox]) ~ label.if, input.if:not([type=radio]):not([type=checkbox]) ~ label.if.input-label, select.if ~ .if.input-label-wrapper > label.if, select.if ~ .if.input-label-wrapper > label.if.input-label, select.if ~ label.if, select.if ~ label.if.input-label, textarea.if.textarea ~ .if.input-label-wrapper > label.if, textarea.if.textarea ~ .if.input-label-wrapper > label.if.input-label, textarea.if.textarea ~ label.if, textarea.if.textarea ~ label.if.input-label, textarea.if ~ .if.input-label-wrapper > label.if, textarea.if ~ .if.input-label-wrapper > label.if.input-label, textarea.if ~ label.if, textarea.if ~ label.if.input-label {
     color: rgba(51, 30, 17, .9);
@@ -35460,14 +35425,29 @@ input.if:focus-visible {
 
 
 /**/
+.tutor {
+    background-color: #f6f3f0;
+}
+
 .travel-bag {
+    background-size: contain;
     background-image: url(../img/travel-bag.png);
+    width: 550px;
+    height: 500px;
+    background-repeat: no-repeat;
+    border: none;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-right: 5%;
+}
+
+.bag2 {
+    background-image: url(../img/travel-bag2.png);    
 }
 
 .custom-date {
     height: 3rem;
     padding: 0 1rem;
-    width: 296px;
     background-color: #faf9f7;
     border: .0625rem solid #6e625e;
     border-radius: 0;

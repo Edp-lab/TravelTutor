@@ -3,16 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TravelTutor</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/ifdesignsystem.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/css-helpers.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/simple-grid.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="if app">
-        <header class="if global-header has-hero ">
+    <div class="if app tutor">
+        <header class="if global-header">
             <nav class="if primary">
                 <div class="if desktop container">
                     <ul class="if desktop-menu-list">
@@ -27,7 +28,7 @@
                         </li>
 
                         <li class="if desktop-menu-item login-holder single ">
-                            <a class="if desktop-menu-action button login" href="https://mans.if.lv/policies?language=lv">Mans If</a>
+                            <a class="if desktop-menu-action button login" href="#">My IF</a>
                         </li>
                     </ul>
                 </div>
@@ -47,7 +48,7 @@
                     </ul>
                     <ul class="if global-menu-list global">
                         <li class="if global-menu-item">
-                            <button class="if global-menu-action search" aria-expanded="false" aria-controls="header-search-bar" id="header-open-search-button">Meklēt</button>
+                            <button class="if global-menu-action search" aria-expanded="false" aria-controls="header-search-bar" id="header-open-search-button">Search</button>
                         </li>
                     </ul>
                 </div>
@@ -63,7 +64,7 @@
         <div class="if block dark">
             <div class="if container">
                 <ul class="if cards navigational lifestyle three teasers" role="presentation">
-                    <li class="if navigational-card lifestyle" id="d92d7fd5ce1c4cda95af3e668df2718f">
+                    <li class="if navigational-card lifestyle">
                         <span class="if image">
                             <img class="if image lifestyle responsively-lazy" alt="" src="https://v.imgi.no/auds322vry-SQUARE/400" data-srcset="https://v.imgi.no/auds322vry-SQUARE/400 400w, https://v.imgi.no/auds322vry-SQUARE/560 560w">
                         </span>
@@ -71,62 +72,46 @@
                             To check before the trip
                             <span class="if inline-nowrap">﻿<span class="if icon ui arrow-right"></span></span>
                         </span>
-
                         <div class="if text"><p>Get an overview of everything before the trip – the passport, visa, vaccination to avoid stress until the very end.</p></div>
-
-                        <a href="/privatpersonam/apdrosinasana/majokla-apdrosinasana/padomi-ka-sagatavoties-vetrai" alt="Lasīt vairāk" title="Lasīt vairāk" target="" class="if standalone">
+                        <a href="" alt="Lasīt vairāk" title="Lasīt vairāk" target="" class="if standalone">
                             Read more
                         </a>
                     </li>
 
 
-                    <li class="if navigational-card lifestyle" id="cd25d93ca0c041d0b818445b2da64148">
+                    <li class="if navigational-card lifestyle">
                         <span class="if image">
-
-
-
                             <img class="if image lifestyle responsively-lazy" alt="" src="https://v.imgi.no/s5l77jxf6f-SQUARE/400" data-srcset="https://v.imgi.no/s5l77jxf6f-SQUARE/400 400w, https://v.imgi.no/s5l77jxf6f-SQUARE/560 560w">
                         </span>
                         <span class="if title">
                             Contact us
                             <span class="if inline-nowrap">﻿<span class="if icon ui arrow-right"></span></span>
                         </span>
-
                         <div class="if text"><p>Not sure what kind of help you need or what to do next?</p></div>
-
-
                         <a href="#" alt="Contact us" title="Contact us" target="" class="if standalone">
                             Contact us
                         </a>
                     </li>
 
-
-
-                    <li class="if navigational-card lifestyle" id="bc80f5487db545e283dc3012870f6734">
+                    <li class="if navigational-card lifestyle">
                         <span class="if image">
-
-
-
                             <img class="if image lifestyle responsively-lazy" alt="" src="https://v.imgi.no/e74cyq7cc4-SQUARE/400" data-srcset="https://v.imgi.no/e74cyq7cc4-SQUARE/400 400w, https://v.imgi.no/e74cyq7cc4-SQUARE/560 560w">
                         </span>
                         <span class="if title">
                             Travel by car
                             <span class="if inline-nowrap">﻿<span class="if icon ui arrow-right"></span></span>
                         </span>
-
                         <div class="if text"><p>If you are going to travel by car in Europe, it is wise to find out what applies to the countries you are going to visit.</p></div>
-
-
                         <a href="/if-mobile" alt="Lasīt vairāk" title="Lasīt vairāk" target="" class="if standalone">
                             Read more
                         </a>
                     </li>
-
                 </ul>
             </div>
         </div>
     </div>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/icons.js" type="module"></script>
     <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script
