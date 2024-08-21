@@ -1,26 +1,20 @@
-﻿using Azure.Storage.Blobs;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using TravelTutor.Configuration;
+﻿using Microsoft.AspNetCore.Mvc;
 using TravelTutor.Models;
+using TravelTutor.Services;
 
 namespace TravelTutor.Controllers;
 
-public class VideoController(IOptions<VideoOptions> options, BlobServiceClient blobServiceClient) : Controller
+public class VideoController(
+    VideoService videoService,
+    TravelDataService travelDataService) : Controller
 {
     public async Task<IActionResult> Index()
     {
-        VideoViewModel model = new(){Videos = []};
-        var container = blobServiceClient.GetBlobContainerClient(options.Value.ContainerName);
-        var blobs = container.GetBlobsAsync();
-        await foreach(var blob in blobs)
-        {
-            if (blob.Name.EndsWith(".mp4"))
-            {
-                model.Videos.Add(new Video{Id = blob.Name, Title = blob.Name});
-            }
-        }
-        
+        VideoViewModel model = new();
+        var travelData = travelDataService.GetCurrent();
+        var videos = await videoService.GetVideos(travelData!);
+        model.Videos.AddRange(videos);
+
         return View(model);
     }
 }

@@ -2,7 +2,7 @@
 
 public class VideoViewModel
 {
-    public List<Video> Videos { get; set; }
+    public List<Video> Videos { get; set; } = [];
 }
 
 public class Video
