@@ -17,4 +17,9 @@ public class VideoController(
 
         return View(model);
     }
+
+    public IActionResult ToQuiz()
+    {
+        return RedirectToAction("Index", "Test");
+    }
 }
