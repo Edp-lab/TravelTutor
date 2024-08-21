@@ -12,7 +12,6 @@ public class TestController(QuestionsService questionsService, TravelDataService
         var questions = await questionsService.GetQuestions(travelData!);
         TestViewModel model = new()
         {
-            Input = "fffff",
             Questions = questions.Select(question => new QuestionViewModel { Question = question }).ToList()
         };
         return View(model);
