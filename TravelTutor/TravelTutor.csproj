@@ -4,10 +4,13 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>a1f2d235-a0fd-4f9f-b389-dcad996130b3</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Azure.AI.OpenAI" Version="2.0.0-beta.2" />
-    </ItemGroup>
+      <PackageReference Include="Azure.Storage.Blobs" Version="12.21.2" />
+		<PackageReference Include="Azure.AI.OpenAI" Version="2.0.0-beta.2" />
+
+	</ItemGroup>
 
 </Project>

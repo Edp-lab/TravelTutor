@@ -1,0 +1,32 @@
+﻿@model TravelTutor.Models.VideoViewModel
+@{
+    ViewData["Title"] = "Travel Tutor";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Watch</h1>
+    <p>Video tutoring you about the risks and precautions you need to take during your travel</p>
+    @foreach (var video in Model.Videos)
+    {
+        <h2>@video.Title</h2>
+        <video
+            id="my-video"
+            class="video-js"
+            controls
+            preload="auto"
+            width="960"
+            poster="//vjs.zencdn.net/v/oceans.png"
+            data-setup="{}"
+        >
+            <source src="/Stream/Video?id=@video.Id" type="video/mp4" />
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank"
+                >supports HTML5 video</a
+                >
+            </p>
+        </video>
+    }
+    
+</div>
