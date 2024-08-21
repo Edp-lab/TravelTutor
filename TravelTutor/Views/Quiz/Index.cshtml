@@ -4,34 +4,44 @@
 }
 
 <div class="if container">
-    <h1 class="if">Take a quiz and receive your 10% discount</h1>
-    <form asp-action="SubmitResult" method="post">
-        @for (int questionIndex = 0; questionIndex < Model.Questions.Count; questionIndex++)
-        {
-            <div class="if">
-                @{ var number = questionIndex + 1; }
-                <div class="if d-flex gap-8 flex-row mt-40">
-                    <div class="if circle">@number</div>
-                    <p class="if quiz-question">@Model.Questions[questionIndex].Question.Question</p>
-                </div>
-                <fieldset id="fields-@questionIndex" class="if quiz-selection gap-8">
-                    @for (int optionIndex = 0; optionIndex < Model.Questions[questionIndex].Question.Options.Count; optionIndex++)
-                    {
-                        <div class="if radio-button">
-                            <input class="if radio-button-input" type="radio" id="fields-@questionIndex-question-@optionIndex" name="Questions[@questionIndex].AnswerInput" value="@Model.Questions[questionIndex].Question.Options[optionIndex]">
-                            <label class="if typography ui medium" for="fields-@questionIndex-question-@optionIndex">@Model.Questions[questionIndex].Question.Options[optionIndex]</label>
-                        </div>
-                    }
-                </fieldset>
-                @Html.HiddenFor(m => m.Questions[questionIndex].Question.Question)
-                @for (int optionIndex = 0; optionIndex < Model.Questions[questionIndex].Question.Options.Count; optionIndex++)
+    <div class="row if">
+        <div class="col-md-8">
+            <h1 class="if">Take a quiz and receive your 10% discount</h1>
+            <form asp-action="SubmitResult" method="post">
+                @for (int questionIndex = 0; questionIndex < Model.Questions.Count; questionIndex++)
                 {
-                    @Html.HiddenFor(m => m.Questions[questionIndex].Question.Options[optionIndex])
+                    <div class="if">
+                        @{
+                            var number = questionIndex + 1;
+                        }
+                        <div class="if d-flex gap-8 flex-row mt-40">
+                            <div class="if circle">@number</div>
+                            <p class="if quiz-question">@Model.Questions[questionIndex].Question.Question</p>
+                        </div>
+                        <fieldset id="fields-@questionIndex" class="if quiz-selection gap-8">
+                            @for (int optionIndex = 0; optionIndex < Model.Questions[questionIndex].Question.Options.Count; optionIndex++)
+                            {
+                                <div class="if radio-button">
+                                    <input class="if radio-button-input" type="radio" id="fields-@questionIndex-question-@optionIndex" name="Questions[@questionIndex].AnswerInput" value="@Model.Questions[questionIndex].Question.Options[optionIndex]">
+                                    <label class="if typography ui medium" for="fields-@questionIndex-question-@optionIndex">@Model.Questions[questionIndex].Question.Options[optionIndex]</label>
+                                </div>
+                            }
+                        </fieldset>
+                        @Html.HiddenFor(m => m.Questions[questionIndex].Question.Question)
+                        @for (int optionIndex = 0; optionIndex < Model.Questions[questionIndex].Question.Options.Count; optionIndex++)
+                        {
+                            @Html.HiddenFor(m => m.Questions[questionIndex].Question.Options[optionIndex])
+                        }
+                    </div>
                 }
-            </div>
-        }
-        <div class="if mt-48 mb-48">
-            <button class="if button primary" type="submit">Submit answers</button>
+                <div class="if mt-48 mb-48">
+                    <button class="if button primary" type="submit">Submit answers</button>
+                </div>
+            </form>
         </div>
-    </form>
+        <div class="col-md-4">
+            <div class="if image travel-bag bag2">
+            </div>
+        </div>
+    </div>
 </div>
