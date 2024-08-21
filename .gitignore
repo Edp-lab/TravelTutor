@@ -367,7 +367,6 @@ deployment/**/overlays/**/result.yaml
 IDM.CoreAPI.Client/IDM.CoreAPI.Client.xml
 docker-compose.override.yml
 /postman/IDM.CoreAPI*.html
-/**/wwwroot
 /**/appsettings.Local.json
 /migration.sql
 .vscode/settings.json
