@@ -1,11 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TravelTutor.Models;
+using TravelTutor.Services;
 
 namespace TravelTutor.Controllers;
 
-public class TestController : Controller
+public class TestController(QuestionsService questionsService, TravelDataService travelDataService) : Controller
 {
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var travelData = travelDataService.GetCurrent();
+        var questions = await questionsService.GetQuestions(travelData!);
+        TestViewModel model = new()
+        {
+            Input = "fffff",
+            Questions = questions.Select(question => new QuestionViewModel { Question = question }).ToList()
+        };
+        return View(model);
+    }
+
+    [HttpPost]
+    public IActionResult SubmitResult(TestViewModel model)
+    {
+        return View(model);
     }
 }

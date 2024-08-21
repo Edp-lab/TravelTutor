@@ -19,6 +19,7 @@ builder.Services
     .AddHttpContextAccessor()
     .AddSingleton<VideoService>()
     .AddSingleton<TravelDataService>()
+    .AddSingleton<QuestionsService>()
     .AddSession();
 var app = builder.Build();
 app.UseSession();
