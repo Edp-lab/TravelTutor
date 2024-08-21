@@ -35432,13 +35432,15 @@ input.if:focus-visible {
 .travel-bag {
     background-size: contain;
     background-image: url(../img/travel-bag.png);
-    width: 550px;
-    height: 500px;
+    width: 750px;
+    height: 600px;
     background-repeat: no-repeat;
     border: none;
     margin-left: 5%;
     margin-top: 5%;
     margin-right: 5%;
+    right: 15rem;
+    position: relative
 }
 
 .bag2 {
