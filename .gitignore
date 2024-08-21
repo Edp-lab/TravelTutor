@@ -362,12 +362,3 @@ FodyWeavers.xsd
 
 # IDE specific folder
 .idea/
-
-deployment/**/overlays/**/result.yaml
-IDM.CoreAPI.Client/IDM.CoreAPI.Client.xml
-docker-compose.override.yml
-/postman/IDM.CoreAPI*.html
-/**/appsettings.Local.json
-/migration.sql
-.vscode/settings.json
-/pipelines/idmcoreapi/database/migration.pgsql
