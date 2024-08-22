@@ -3,37 +3,36 @@
     ViewData["Title"] = "Travel Tutor";
 }
 
-<div class="if block dark">
-    <div class="if container">
-        <div class="if">
-            <h2 class="if mb-16">Watch your personalized travel safety guide</h2>
-            <p class="if text paragraph">Get ready to explore confidently! Watch this brief video packed with must-know safety tips for your trip.</p>
-            <div class="if mt-40 mb-40">
-                <video
-                    id="my-video"
-                    class="video-js"
-                    controls
-                    preload="auto"
-                    width="960"
-                    poster="//vjs.zencdn.net/v/oceans.png"
-                    data-setup="{}">
-                    <source src="/Stream/Video?id=@Model.Videos[0].Id" type="video/mp4"/>
-                    <p class="vjs-no-js">
-                        To view this video please enable JavaScript, and consider upgrading to a
-                        web browser that
-                        <a href="https://videojs.com/html5-video-support/" target="_blank">
-                            supports HTML5 video
-                        </a
-                        >
-                    </p>
-                </video>
-            </div>
+<div class="if container">
+    <div class="if">
+        <h2 class="if mb-16">Watch your personalized travel safety guide</h2>
+        <p class="if text paragraph">Get ready to explore confidently! Watch this brief video packed with must-know safety tips for your trip.</p>
+        <div class="if mt-40 mb-40">
+            <video
+                id="my-video"
+                class="video-js"
+                controls
+                preload="auto"
+                width="960"
+                poster="//vjs.zencdn.net/v/oceans.png"
+                data-setup="{}">
+                <source src="/Stream/Video?id=@Model.Videos[0].Id" type="video/mp4"/>
+                <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a
+                    web browser that
+                    <a href="https://videojs.com/html5-video-support/" target="_blank">
+                        supports HTML5 video
+                    </a
+                    >
+                </p>
+            </video>
         </div>
-        <h3 class="if">Take a quiz and receive a discount</h3>
-        <div class="if mt-24">
-            <form asp-action="ToQuiz">
-                <button class="if button primary largest" type="submit">Take a quiz</button>
-            </form>
-        </div>
+    </div>
+    <h3 class="if">Take a quiz and receive a discount</h3>
+    <p>After watching a video take a quick quiz to test your knowledge and unlock a <b>10% discount!</b></p>
+    <div class="if mt-24">
+        <form asp-action="ToQuiz">
+            <button class="if button primary" type="submit">Take a quiz</button>
+        </form>
     </div>
 </div>
