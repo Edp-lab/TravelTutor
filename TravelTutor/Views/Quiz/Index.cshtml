@@ -18,16 +18,25 @@
                                     <div class="if circle">@number</div>
                                     <p class="if quiz-question">@Model.Questions[questionIndex].Question.Question</p>
                                 </div>
-                                <fieldset id="fields-@questionIndex" class="if quiz-selection gap-8">
+                                @{
+                                    var fieldClass = "if quiz-selection gap-8";
+                                    if (@Model.Questions[questionIndex].IsError) fieldClass += " error";
+                                }
+                                <fieldset id="fields-@questionIndex" class="@fieldClass">
                                     @for (int optionIndex = 0; optionIndex < Model.Questions[questionIndex].Question.Options.Count; optionIndex++)
                                     {
                                         <div class="if radio-button">
-                                            <input class="if radio-button-input" type="radio" id="fields-@questionIndex-question-@optionIndex" name="Questions[@questionIndex].AnswerInput" value="@Model.Questions[questionIndex].Question.Options[optionIndex]">
+                                            @{
+                                                var isChecked = @Model.Questions[questionIndex].Question.Options[optionIndex] == @Model.Questions[questionIndex].AnswerInput;
+                                            }
+                                            <input class="if radio-button-input" type="radio" id="fields-@questionIndex-question-@optionIndex" name="Questions[@questionIndex].AnswerInput" value="@Model.Questions[questionIndex].Question.Options[optionIndex]"
+                                                   checked="@isChecked">
                                             <label class="if typography ui medium" for="fields-@questionIndex-question-@optionIndex">@Model.Questions[questionIndex].Question.Options[optionIndex]</label>
                                         </div>
                                     }
                                 </fieldset>
                                 @Html.HiddenFor(m => m.Questions[questionIndex].Question.Question)
+                                <input class="if radio-button-input" type="hidden" id="fields-@questionIndex-question-correct" name="Questions[@questionIndex].Questions.CorrectAnswer" value="@Model.Questions[questionIndex].Question.CorrectAnswer">
                                 @for (int optionIndex = 0; optionIndex < Model.Questions[questionIndex].Question.Options.Count; optionIndex++)
                                 {
                                     @Html.HiddenFor(m => m.Questions[questionIndex].Question.Options[optionIndex])

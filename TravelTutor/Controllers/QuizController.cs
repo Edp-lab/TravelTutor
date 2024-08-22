@@ -23,6 +23,19 @@ public class QuizController(
     [HttpPost]
     public async Task<IActionResult> SubmitResult(QuizViewModel model)
     {
+        var travelData = travelDataService.GetCurrent();
+        var allQuestions = await questionsService.GetQuestions(travelData!);
+        foreach (var question in model.Questions)
+        {
+            var correctQuestion = allQuestions.First(q => q.Question == question.Question.Question);
+            question.IsError = question.AnswerInput != correctQuestion.CorrectAnswer;
+        }
+
+        if (model.Questions.Any(question => question.IsError))
+        {
+            return View("Index", model);
+        }
+
         model.IsSuccess = true;
         model.SuccessModel = new();
         var code = await completionService.GetCompletionCode(model);
