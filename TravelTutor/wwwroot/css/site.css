@@ -35525,3 +35525,7 @@ dialog.if.modal-v19 {
 .if.button.modal-v19-close-button {
     border-radius: 50% !important;
 }
+
+.if.quiz-selection.error {
+    border: solid 2px red !important;
+}
