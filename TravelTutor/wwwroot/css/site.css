@@ -16292,10 +16292,6 @@ input.if:not(:placeholder-shown) ~ button.if.reset, textarea.if:not(:placeholder
     text-decoration: none
 }
 
-.if.global-header .if.desktop-menu-action.is-hovered, .if.global-header .if.desktop-menu-action:hover {
-    text-decoration: underline
-}
-
 .if.global-header .desktop-menu-action, .if.global-header .global-menu-action, .if.global-header .global-menu-item, .if.global-header .if.primary .desktop-menu-item {
     position: relative
 }
@@ -35109,6 +35105,13 @@ input.if:focus-visible {
 
 
 /**/
+
+.if.desktop-menu-action.button.is-active:hover,
+.if.desktop-menu-action.button:hover{
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
 h2.if {
     margin-top: 56px;
 }
@@ -35208,6 +35211,7 @@ dialog.if.modal-v19 {
     max-width: 100rem !important;
 }
 
+.if.desktop-menu-action.button,
 .if.button.login {
     border-radius: 0 !important;
 }
