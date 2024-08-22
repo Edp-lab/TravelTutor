@@ -1,11 +1,18 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using System.Text.Json;
+using Azure.Data.Tables;
+using Microsoft.Extensions.Caching.Memory;
 using TravelTutor.Models;
+using TableEntity = TravelTutor.Models.TableEntity;
 
 namespace TravelTutor.Services;
 
-public class CompletionService(IMemoryCache cache, TravelDataService travelDataService)
+public class CompletionService(
+    IMemoryCache cache,
+    TravelDataService travelDataService,
+    TableServiceClient tableServiceClient)
 {
     private const string Key = "Completed";
+    private const string TableName = "completion";
 
     public async Task<string> GetCompletionCode(QuizViewModel model)
     {
@@ -21,7 +28,20 @@ public class CompletionService(IMemoryCache cache, TravelDataService travelDataS
     public void Complete(QuizViewModel model)
     {
         var travelData = travelDataService.GetCurrent();
-        cache.Set($"{Key}{model.SuccessModel.Code}", new { TravelData = travelData, QuizViewModel = model });
+        var client = tableServiceClient.GetTableClient(TableName);
+        var data = new
+        {
+            ConsentData = model.SuccessModel,
+            Questions = model.Questions,
+            TravelData = travelData!,
+        };
+        client.AddEntity(new TableEntity
+        {
+            RowKey = model.SuccessModel.Code,
+            PartitionKey = "user_completion_data",
+            Timestamp = DateTimeOffset.Now,
+            DataJson = JsonSerializer.Serialize(data),
+        });
     }
 
     private async Task<string> GenerateCode(TravelData travelData, QuizViewModel model)
