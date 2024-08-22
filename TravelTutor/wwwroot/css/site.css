@@ -35109,6 +35109,10 @@ input.if:focus-visible {
 
 
 /**/
+h2.if {
+    margin-top: 56px;
+}
+
 .tutor {
     background-color: #f6f3f0;
     z-index: 1 !important;
@@ -35117,12 +35121,12 @@ input.if:focus-visible {
 .travel-bag {
     background-size: contain;
     background-image: url(../img/travel-bag.png);
-    width: 750px;
-    height: 600px;
+    width: 600px;
+    height: 500px;
     background-repeat: no-repeat;
     border: none;
-    margin-left: 5%;
-    margin-top: 5%;
+    margin-left: 50%;
+    margin-top: 30%;
     margin-right: 5%;
     right: 15rem;
     position: relative;
