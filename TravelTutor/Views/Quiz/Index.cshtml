@@ -3,43 +3,45 @@
     ViewData["Title"] = "Travel Tutor";
 }
 
-<div class="if container">
-    <div class="if grid">
-        <div class="if row">
-            <div class="if col-md-8">
-                <h1 class="if">Take a quiz and receive your 10% discount</h1>
-                <form asp-action="SubmitResult" method="post">
-                    @for (int questionIndex = 0; questionIndex < Model.Questions.Count; questionIndex++)
-                    {
-                        <div class="if">
-                            @{ var number = questionIndex + 1; }
-                            <div class="if d-flex gap-8 flex-row mt-40">
-                                <div class="if circle">@number</div>
-                                <p class="if quiz-question">@Model.Questions[questionIndex].Question.Question</p>
-                            </div>
-                            <fieldset id="fields-@questionIndex" class="if quiz-selection gap-8">
+<div class="if block dark">
+    <div class="if container">
+        <div class="if grid">
+            <div class="if row">
+                <div class="if col-md-8">
+                    <h1 class="if">Take a quiz and receive your 10% discount</h1>
+                    <form asp-action="SubmitResult" method="post">
+                        @for (int questionIndex = 0; questionIndex < Model.Questions.Count; questionIndex++)
+                        {
+                            <div class="if">
+                                @{ var number = questionIndex + 1; }
+                                <div class="if d-flex gap-8 flex-row mt-40">
+                                    <div class="if circle">@number</div>
+                                    <p class="if quiz-question">@Model.Questions[questionIndex].Question.Question</p>
+                                </div>
+                                <fieldset id="fields-@questionIndex" class="if quiz-selection gap-8">
+                                    @for (int optionIndex = 0; optionIndex < Model.Questions[questionIndex].Question.Options.Count; optionIndex++)
+                                    {
+                                        <div class="if radio-button">
+                                            <input class="if radio-button-input" type="radio" id="fields-@questionIndex-question-@optionIndex" name="Questions[@questionIndex].AnswerInput" value="@Model.Questions[questionIndex].Question.Options[optionIndex]">
+                                            <label class="if typography ui medium" for="fields-@questionIndex-question-@optionIndex">@Model.Questions[questionIndex].Question.Options[optionIndex]</label>
+                                        </div>
+                                    }
+                                </fieldset>
+                                @Html.HiddenFor(m => m.Questions[questionIndex].Question.Question)
                                 @for (int optionIndex = 0; optionIndex < Model.Questions[questionIndex].Question.Options.Count; optionIndex++)
                                 {
-                                    <div class="if radio-button">
-                                        <input class="if radio-button-input" type="radio" id="fields-@questionIndex-question-@optionIndex" name="Questions[@questionIndex].AnswerInput" value="@Model.Questions[questionIndex].Question.Options[optionIndex]">
-                                        <label class="if typography ui medium" for="fields-@questionIndex-question-@optionIndex">@Model.Questions[questionIndex].Question.Options[optionIndex]</label>
-                                    </div>
+                                    @Html.HiddenFor(m => m.Questions[questionIndex].Question.Options[optionIndex])
                                 }
-                            </fieldset>
-                            @Html.HiddenFor(m => m.Questions[questionIndex].Question.Question)
-                            @for (int optionIndex = 0; optionIndex < Model.Questions[questionIndex].Question.Options.Count; optionIndex++)
-                            {
-                                @Html.HiddenFor(m => m.Questions[questionIndex].Question.Options[optionIndex])
-                            }
+                            </div>
+                        }
+                        <div class="if mt-48 mb-48">
+                            <button class="if button primary" type="submit">Submit answers</button>
                         </div>
-                    }
-                    <div class="if mt-48 mb-48">
-                        <button class="if button primary" type="submit">Submit answers</button>
+                    </form>
+                </div>
+                <div class="if col-md-4">
+                    <div class="if image travel-bag bag2">
                     </div>
-                </form>
-            </div>
-            <div class="if col-md-4">
-                <div class="if image travel-bag bag2">
                 </div>
             </div>
         </div>
@@ -89,8 +91,12 @@
                                     @Html.HiddenFor(m => m.Questions[questionIndex].Question.Options[optionIndex])
                                 }
                             }
-                            @Html.HiddenFor(m => m.IsSuccess)
-                            @Html.HiddenFor(m => m.SuccessModel.Code)
+                            <input
+                                class="if input-field complete"
+                                name="Model.SuccessModel.Code"
+                                id="code"
+                                type="hidden"
+                                value="@Model.SuccessModel.Code"/>
                             <div class="if flex-column gap-8">
                                 <label class="if label" for="email">E-mail address</label>
                                 <input
