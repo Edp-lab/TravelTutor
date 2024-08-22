@@ -35136,6 +35136,8 @@ h2.if {
 .bag2 {
     background-image: url(../img/travel-bag2.png);
     z-index: 1 !important;
+    width: 750px;
+    margin-left: 30%;
 }
 
 .custom-date {
